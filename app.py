@@ -180,7 +180,7 @@ st.write("Tweet type chey, adi **Hate**, **Offensive**, or **Neither** ani chept
 # User input
 tweet_input = st.text_area("Tweet type chey:", height=100)
 
-if st.button("Classify Cheyyi"):
+if st.button("Classify "):
     if not tweet_input.strip():
         st.error("Tweet type cheyyali, empty ga vaddu!")
     else:
@@ -191,16 +191,6 @@ if st.button("Classify Cheyyi"):
             st.success(f"**Prediction**: {predicted_class}")
             st.write(f"**Tweet**: {tweet_input}")
 
-            # Word cloud
-            st.subheader("Word Cloud")
-            text = preprocess(tweet_input).lower()
-            text = re.sub(r'[^a-zA-Z\s]', '', text)
-            wordcloud = WordCloud(width=400, height=200, background_color='white',
-                                  stopwords=stopwords + custom_profanity_list,
-                                  min_font_size=10).generate(text)
-            fig, ax = plt.subplots()
-            ax.imshow(wordcloud, interpolation='bilinear')
-            ax.axis('off')
-            st.pyplot(fig)
+           
         except Exception as e:
             st.error(f"Error vachindi: {str(e)}")
